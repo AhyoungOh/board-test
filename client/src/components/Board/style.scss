@@ -1,0 +1,35 @@
+@mixin flexCenter() {
+  display: fles;
+  justify-content: center;
+  align-items: center;
+}
+.select {
+  width: 115%;
+  height: 10%;
+  background: rgb(197, 197, 197);
+  border-radius: 16px;
+  margin-left: 5%;
+  margin-top: 10px;
+}
+.contents1 {
+  display: flex;
+}
+.picture {
+  margin: 1%;
+}
+.picture > img {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+}
+.text {
+  padding: 5px;
+}
+.money-user {
+  display: flex;
+  justify-content: space-between;
+}
+.user {
+  position: absolute;
+  left: 85%;
+}

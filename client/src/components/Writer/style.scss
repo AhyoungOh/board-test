@@ -1,0 +1,42 @@
+.Writer {
+  margin: 10px;
+  padding: 50px;
+  background-color: #d8b6b6;
+  width: 80%;
+  border-color: #574747;
+}
+.board {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+.title {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bolder;
+}
+.contents {
+  margin-top: 30px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: space-between;
+}
+.donebutton {
+  text-align: center;
+  margin-top: 100px;
+}
+.input1 {
+  margin-left: 10px;
+}
+.buttonDone {
+  width: 90px;
+}
+.input4 {
+  margin-left: 150px;
+  width: 200px;
+  height: 100px;
+}
+.namedata-title {
+  font-size: 30px;
+}
