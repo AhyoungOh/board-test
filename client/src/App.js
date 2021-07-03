@@ -26,11 +26,11 @@ function App() {
     <div>
       <Header />
       <Router>
-        <Route exact path='/'>
-          <Main />
-        </Route>
         <Route path='/category'>
           <Category />
+        </Route>
+        <Route path='/'>
+          <Main />
         </Route>
         <Footer />
       </Router>

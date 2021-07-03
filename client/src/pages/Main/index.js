@@ -1,7 +1,7 @@
 import Board from '../../components/Board';
 import Write from '../../components/Write';
 import Detail from '../../components/Detail';
-import { Router, useHistory, useLocation } from 'react-router';
+import { Route, useHistory, useLocation } from 'react-router-dom';
 
 import useApiCall from '../../hooks/useApiCall';
 import './style.scss';
@@ -24,7 +24,12 @@ function Main() {
   if (error !== null) {
     return <div>Error</div>;
   }
-
+  const boardId = location.pathname.split('/')[2];
+  console.log(testData);
+  const boardData = testData.find((el) => {
+    return el._id === boardId;
+  });
+  console.log(boardData);
   const BoardComponents = testData.map((boardData) => {
     return (
       <Board
@@ -35,34 +40,34 @@ function Main() {
         price={boardData.price}
         user={boardData.user}
         imageLink={boardData.imageLink}
-        setBoardData={() => {
-          setBoardData({ ...boardData });
+        onClick={() => {
+          history.push(`/board/${boardData._id}`);
         }}
       />
     );
   });
   return (
     <div>
-      {boardData === null ? (
-        BoardComponents
-      ) : (
+      <Route exact path='/'>
+        {BoardComponents}
+        <button
+          className='open-button'
+          onClick={() => setVisible((state) => !state)}
+        ></button>
+      </Route>
+      <Route exact path='/board/:boardId'>
         <Detail
           boardData={boardData}
           setTestData={() => {}}
-          setBoardData={setBoardData}
+          // setBoardData={setBoardData}
           setVisible={setVisible}
         />
-      )}
-
-      <button
-        className='open-button'
-        onClick={() => setVisible((state) => !state)}
-      ></button>
+      </Route>
 
       {visible ? (
         <Write
           boardData={boardData}
-          setBoardData={setBoardData}
+          // setBoardData={setBoardData}
           setData={() => {}}
           fetchData={fetchData}
           setVisible={setVisible}
