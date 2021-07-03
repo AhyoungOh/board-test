@@ -1,40 +1,19 @@
 import './style.scss';
 import Board from '../Board';
+import Content from './Contents';
 
-function Detail({ boardData, setTestData, setBoardData, setVisible }) {
-  const updateBoardData = () => {
-    setVisible(true);
-  };
-  const deleteBoardData = () => {
-    const id = boardData.id;
-    setTestData((state) => {
-      const newState = state.filter((board) => {
-          return id !== board.id;
-      });
-      setBoardData(null);
-      return newState;
-    });
-
-  };
-
+function Detail({ boardData, setVisible }) {
   return (
     <div>
-        <Board
-          title={boardData.title}
-          catagory={boardData.category}
-          time={boardData.time}
-          money={boardData.money}
-          user={boardData.user}
-          imageLink={boardData.imageLink}
-        />
-      <div className="detail">
-        <div>글 내용</div>
-        <div>{boardData.detailText}</div>
-        <div className="buttons">
-          <button onClick={updateBoardData}>수정</button>
-          <button onClick={deleteBoardData}>삭제</button>
-        </div>
-      </div>
+      <Board
+        title={boardData.title}
+        catagory={boardData.category}
+        time={boardData.time}
+        price={boardData.price}
+        user={boardData.user}
+        imageLink={boardData.imageLink}
+      />
+      <Content setVisible={setVisible} content={boardData.contents} />
     </div>
   );
 }

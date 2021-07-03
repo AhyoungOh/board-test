@@ -20,19 +20,38 @@ exports.getBoardById = async (boardId) => {
   }
 };
 
-exports.addBoard = async ({ boardId, title, content }) => {
+exports.addBoard = async ({ title, contents, price, category, imageKink }) => {
   try {
-    await BoardModel.create({ id: boardId, title, content }).exec();
+    await BoardModel.create({
+      title,
+      contents,
+      price,
+      category,
+      imageLink,
+    });
   } catch (err) {
     console.error(err);
     return {};
   }
 };
 
-exports.updateBoard = async ({ boardId, title, content }) => {
+exports.updateBoard = async ({
+  boardId,
+  title,
+  contents,
+  price,
+  category,
+  imageLink,
+}) => {
   try {
-    const query = { id: boardId };
-    await BoardModel.updateOne(query, { title, content }).exec();
+    const query = { _id: boardId };
+    await BoardModel.updateOne(query, {
+      title,
+      contents,
+      price,
+      category,
+      imageLink,
+    }).exec();
   } catch (err) {
     console.error(err);
     return {};
@@ -41,10 +60,18 @@ exports.updateBoard = async ({ boardId, title, content }) => {
 
 exports.deleteBoard = async ({ boardId }) => {
   try {
-    const query = { id: boardId };
+    const query = { _id: boardId };
     await BoardModel.deleteOne(query).exec();
   } catch (err) {
     console.error(err);
     return {};
   }
 };
+
+// module.exports = {
+// listBoard,
+//   getBoardById,
+//   addBoard,
+//   updateBoard,
+//   deleteBoard,
+// };
